@@ -1,0 +1,39 @@
+{
+  "name": "AUTH-server-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest --coverage --verbose",
+    "lint": "eslint index.js src/ __test__/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MalekHassan/AUTH-server-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MalekHassan/AUTH-server-/issues"
+  },
+  "homepage": "https://github.com/MalekHassan/AUTH-server-#readme",
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "base-64": "^1.0.0",
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.12.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.10",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@code-fellows/supergoose": "^1.0.11",
+    "jest": "^26.6.1"
+  }
+}
