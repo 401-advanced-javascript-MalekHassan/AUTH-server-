@@ -16,8 +16,8 @@ module.exports = async (req, res, next) => {
   // 2- i have the token, take the token and give me back the user
   // 3- add it to my DB.
   // 4 - the form
-  // try it 
-  try {
+  // try it
+    try {
     let code = req.query.code;
     console.log('1- CODE: ', code);
 
@@ -26,7 +26,7 @@ module.exports = async (req, res, next) => {
     let remoteUser = await getRemoteUserInfo(remoteToken);
 
     let [user , token] = await getUser(remoteUser);
-    req.user = user; 
+    req.user = user;
     req.token = token;
     console.log('1-local user ... ', token);
     console.log('2-local user ... ', user);
@@ -44,10 +44,10 @@ module.exports = async (req, res, next) => {
 async function exchangeCodeForToken(code) {
   let tokenResponse = await superagent.post(TOKEN_SERVER_URL).send({
     client_id : CLIENT_ID,
-    client_secret : CLIENT_SECRET, 
+    client_secret : CLIENT_SECRET,
     redirect_uri: API_SERVER,
     code: code,
-    // grant_type check it 
+    // grant_type check it
   });
     // access_token=e72e16c7e42f292c6912e7710c838347ae178b4a&token_type=bearer
   let access_token = tokenResponse.body.access_token;
@@ -77,13 +77,13 @@ async function getUser(remoteUser) {
 //   console.log('proveoflsadlsa;jf;lvdsa;lvadsl;v');
   try{
     savedUser = await users.save(userRecord);
-  console.log('555local user ... ', savedUser); 
+  console.log('555local user ... ', savedUser);
 
   }catch (e) {
     console.log(`ERROR: ${e}`);
     }
   let myServerToken = users.generateToken(userRecord);
   console.log('myServerToken', myServerToken);
-  console.log('local user ... ', savedUser); 
+  console.log('local user ... ', savedUser);
   return [savedUser, myServerToken]; // {user: user, token: token}
 }
