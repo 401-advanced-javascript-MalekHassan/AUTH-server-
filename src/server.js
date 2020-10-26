@@ -7,7 +7,7 @@ const app = express();
 const err500 = require('./middleware/500.js');
 const err404 = require('./middleware/404.js');
 const userRouters = require('./auth/router');
-
+app.use(express.static('./public'));
 app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
