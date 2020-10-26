@@ -4,22 +4,25 @@ const express = require('express');
 const router = express.Router();
 const users = require('./users');
 const basicAuth = require('./middleware/basic-auth-middleware');
+const oath = require('./middleware/oauth');
 // const app = express();
 // app.use(express.json());
 
 router.post('/signup', signup);
 router.post('/signin', basicAuth, signin);
 router.get('/users', list);
-
+router.get('/oauth', oath, (req, res)=> {
+  res.status(200).send(req.token);
+});
 function signup(req, res) {
-  console.log(req.body, 'aakkaka');
+  // console.log(req.body, 'aakkaka');
   //sign up route if we have the user, return failure, else return generated token.
   let user = req.body;
-  console.log(user);
+  // console.log(user);
   users
     .save(user)
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       // generate a token and return it.
       let token = users.generateToken(result);
       res.status(200).send(token);
@@ -31,7 +34,7 @@ function signup(req, res) {
 }
 
 function signin(req, res) {
-  console.log(req);
+  // console.log(req);
   res.status(200).send(req.token); // return token 4
 }
 function list(req, res) {

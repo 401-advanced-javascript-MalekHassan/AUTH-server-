@@ -12,7 +12,7 @@ class Collection {
   }
 
   create(record) {
-    let newRecord = new this.Schema(record);
+    let newRecord = new this.schema(record);
     return newRecord.save();
   }
 
