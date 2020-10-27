@@ -4,7 +4,7 @@ const users = require('../users');
 const base64 = require('base-64');
 
 module.exports = (req, res, next) => {
-  // console.log(req.headers);
+  console.log(req.headers);
   // check username and password if we have them sent in the request
   // req : params body qs headers
   // req.headers.authorization, encoded username and password
