@@ -40,6 +40,20 @@ users.generateToken = function (user) {
   return token;
 };
 
+users.authenticateToken = async function (token) {
+  try {
+    const tokenObject = jwt.verify(token, secret);
+    console.log('TOKEN OBJECT', tokenObject);
+    if (mongoDB.read(tokenObject.iat)) {
+      return Promise.resolve(tokenObject);
+    } else {
+      return Promise.reject();
+    }
+  } catch (e) {
+    return Promise.reject(e.message);
+  }
+};
+
 users.list = async function (record) {
   let reading = await mongoDB.read(record);
 

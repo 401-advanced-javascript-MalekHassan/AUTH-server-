@@ -5,13 +5,20 @@ const router = express.Router();
 const users = require('./users');
 const basicAuth = require('./middleware/basic-auth-middleware');
 const oath = require('./middleware/oauth');
+const bearerMiddleware = require('./middleware/bearerMiddleware');
 // const app = express();
 // app.use(express.json());
 
 router.post('/signup', signup);
 router.post('/signin', basicAuth, signin);
 router.get('/users', list);
-router.get('/oauth', oath, (req, res)=> {
+router.get('/secret', bearerMiddleware, secretFunction);
+
+function secretFunction(req, res) {
+  res.json(req.user);
+}
+
+router.get('/oauth', oath, (req, res) => {
   res.status(200).send(req.token);
 });
 function signup(req, res) {
