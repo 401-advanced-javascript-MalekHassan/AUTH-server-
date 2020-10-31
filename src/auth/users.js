@@ -14,7 +14,7 @@ users.save = async function (record) {
   // console.log('reading', !reading[0]);
   if (!reading[0]) {
     // console.log(record.password);
-    record.password = await bcrypt.hash(record.password, 5);
+    record.password = await bcrypt.hash(record.password, 7);
     await mongoDB.create(record);
     return record;
   }
@@ -35,7 +35,7 @@ users.authenticateBasic = async function (username, password) {
 };
 
 users.generateToken = function (user) {
-  let token = jwt.sign({ username: user.username }, secret);
+  let token = jwt.sign({ username: user.username }, secret,{expiresIn:15000,})
   // console.log('token', token);
   return token;
 };
