@@ -47,7 +47,7 @@ async function exchangeCodeForToken(code) {
     client_secret : CLIENT_SECRET,
     redirect_uri: API_SERVER,
     code: code,
-    // grant_type check it
+    grant_type: 'authorization_code'
   });
     // access_token=e72e16c7e42f292c6912e7710c838347ae178b4a&token_type=bearer
   let access_token = tokenResponse.body.access_token;
