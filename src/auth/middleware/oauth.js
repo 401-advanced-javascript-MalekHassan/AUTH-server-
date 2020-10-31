@@ -7,7 +7,7 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const TOKEN_SERVER_URL = process.env.TOKEN_SERVER_URL;
 const REMOTE_USER_API = process.env.REMOTE_USER_API;
-const API_SERVER = 'http://localhost:3000/oauth';
+const API_SERVER = process.env.API_SERVER;
 
 
 module.exports = async (req, res, next) => {
