@@ -7,7 +7,7 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const TOKEN_SERVER_URL = process.env.TOKEN_SERVER_URL;
 const REMOTE_USER_API = process.env.REMOTE_USER_API;
-const API_SERVER = 'http://localhost:3000/oauth';
+const API_SERVER = process.env.API_SERVER;
 
 
 module.exports = async (req, res, next) => {
@@ -47,7 +47,7 @@ async function exchangeCodeForToken(code) {
     client_secret : CLIENT_SECRET,
     redirect_uri: API_SERVER,
     code: code,
-    // grant_type check it
+    grant_type: 'authorization_code'
   });
     // access_token=e72e16c7e42f292c6912e7710c838347ae178b4a&token_type=bearer
   let access_token = tokenResponse.body.access_token;

@@ -30,6 +30,7 @@ module.exports = (req, res, next) => {
     .authenticateBasic(user, pass)
     .then((validUser) => {
       req.token = users.generateToken(validUser);
+      req.cookies = users.generateToken(validUser);
       next();
     })
     .catch((err) => next('Invalid Login!!', err));
