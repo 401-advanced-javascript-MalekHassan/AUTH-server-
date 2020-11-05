@@ -11,7 +11,7 @@ const oath = require('./middleware/oauth');
 router.post('/signup', signup);
 router.post('/signin', basicAuth, signin);
 router.get('/users', list);
-router.get('/oauth', oath, (req, res)=> {
+router.get('/oauth', oath, (req, res) => {
   res.status(200).send(req.token);
 });
 function signup(req, res) {
@@ -24,7 +24,7 @@ function signup(req, res) {
     .then((result) => {
       // console.log(result);
       // generate a token and return it.
-      let token = users.generateToken(result);
+      let token = users.generateTokenUp(result);
       res.status(200).send(token);
     })
     .catch((err) => {

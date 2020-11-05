@@ -29,8 +29,8 @@ module.exports = (req, res, next) => {
   users
     .authenticateBasic(user, pass)
     .then((validUser) => {
-      req.token = users.generateToken(validUser);
-      req.cookies = users.generateToken(validUser);
+      req.token = users.generateTokenIn(validUser);
+      req.cookies = users.generateTokenIn(validUser);
       next();
     })
     .catch((err) => next('Invalid Login!!', err));
